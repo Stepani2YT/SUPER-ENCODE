@@ -52,15 +52,17 @@ def main():
 
     args = parser.parse_args()
 
+    passwd = base64_encode(args.password)
+
     if args.mode == 'encrypt':
         encrypt_aes(
             filename=args.filename,
-            password=args.password
+            password=passwd
         )
     elif args.mode == 'decrypt':
         decrypt_aes(
             filename=args.filename,
-            password=args.password,
+            password=passwd,
             out_filename=args.out
         )
     
